@@ -4,12 +4,17 @@ body {
   flex-direction: row;
 }
 
-h1, h2, h3 {
+h1, h2, h3, form > label {
   font-family: 'Open Sans', bold;
 }
 
 img, input[type="image"] {
   width: 25px;
+}
+
+input[type="text"], form > button, .search-container {
+  border-radius: 3px;
+  border: 2px solid #5356a4;
 }
 
 aside {
@@ -47,16 +52,27 @@ flex-wrap: wrap;
 form {
   display: flex;
   flex-direction: column;
-  width: 33%;
+  width: 45%;
   min-height: 50%;
   margin-top: 3%;
 }
  form > input, form > button, form > div {
-   margin: 5% 0;
+   margin: 0 0 5% 0;;
  }
 
- form > input {
+ form > label {
+   color: #1f1f3d;
+   font-weight: bold;
+   font-size: calc(.5rem + .5vw);
+ }
+
+ .title-input {
    height: 10%;
+   /* max-height: 8 */
+ }
+
+ .body-input {
+   height: 20%;
    /* max-height: 8 */
  }
 
@@ -67,7 +83,11 @@ form {
  form > div > input[type=image] {
    width: 8%;
  }
-
+ form > button {
+   background-color: #353567;
+   color: white;
+   border:
+ }
 article {
   width: 33%;
 }
