@@ -9,12 +9,19 @@ h1, h2, h3, form > label {
 }
 
 img, input[type="image"] {
-  width: 25px;
+  width: 20px;
+  padding-left: 5px;
+  /* background-color: 353567; */
 }
 
 input[type="text"], form > button, .search-container {
   border-radius: 3px;
   border: 2px solid #5356a4;
+}
+
+form > button {
+  height: 15%;
+  font-size: calc(.7rem + .7vw);
 }
 
 aside {
@@ -25,11 +32,30 @@ aside {
   width: 25%;
 }
 
+aside > div {
+  border: 3px solid #353567;
+  display: flex;
+  flex-direction: column;
+}
+
 aside h1 {
   color: #e9e9f3;
+  margin: 20px;
 }
-aside h2 {
+aside > div > h2 {
   color: #bfbfdd;
+  margin: 20px;
+  margin-bottom: 10px;
+}
+
+aside > div > button {
+  background-color: #5356a4;
+  color: #e9e9f3;
+  font-size: calc(.7rem + .7vw);
+  border-color: #353567;
+  margin: 20px;
+  height: 40%;
+  padding: 10px;
 }
 
 main {
@@ -96,4 +122,5 @@ article {
   display: flex;
   justify-content: space-between;
   align-items: stretch;
+  background-color: #353567;
 }
