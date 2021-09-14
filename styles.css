@@ -1,0 +1,99 @@
+body {
+  font-family: 'Open Sans', light;
+  display: flex;
+  flex-direction: row;
+}
+
+h1, h2, h3, form > label {
+  font-family: 'Open Sans', bold;
+}
+
+img, input[type="image"] {
+  width: 25px;
+}
+
+input[type="text"], form > button, .search-container {
+  border-radius: 3px;
+  border: 2px solid #5356a4;
+}
+
+aside {
+  background-color: #1f1f3d;
+  /* height: 100vh; */
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+}
+
+aside h1 {
+  color: #e9e9f3;
+}
+aside h2 {
+  color: #bfbfdd;
+}
+
+main {
+  width: 75%;
+  height: 100vh;
+  background-color: #a9aad2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+section {
+background-color: #eaeaf4;
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  min-height: 50%;
+  margin-top: 3%;
+}
+ form > input, form > button, form > div {
+   margin: 0 0 5% 0;;
+ }
+
+ form > label {
+   color: #1f1f3d;
+   font-weight: bold;
+   font-size: calc(.5rem + .5vw);
+ }
+
+ .title-input {
+   height: 10%;
+   /* max-height: 8 */
+ }
+
+ .body-input {
+   height: 20%;
+   /* max-height: 8 */
+ }
+
+ form > div > input {
+   width: 88%;
+ }
+
+ form > div > input[type=image] {
+   width: 8%;
+ }
+ form > button {
+   background-color: #353567;
+   color: white;
+   border:
+ }
+article {
+  width: 33%;
+}
+
+.search-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
