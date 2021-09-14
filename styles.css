@@ -8,19 +8,51 @@ h1, h2, h3, form > label {
   font-family: 'Open Sans', bold;
 }
 
+h2 {
+  font-size: calc(.6rem + .6vw);
+}
+
 img, input[type="image"] {
-  width: 20px;
-  padding-left: 5px;
+  width: 15%;
+  padding: 5px;
   /* background-color: 353567; */
 }
 
-input[type="text"], form > button, .search-container {
+input[type="text"], form > button {
   border-radius: 3px;
   border: 2px solid #5356a4;
+  color: #a9aad2;
+  font-size: calc(.5rem + .5vw);
+}
+
+.search-container {
+  border-radius: 3px;
+  color: #a9aad2;
+  font-size: calc(.5rem + .5vw);
+}
+
+.star-header {
+  background-color: #1f1f3d;
+  display: flex;
+  justify-content: space-between;
+  height: 10%;
+}
+
+article {
+  border: 1px solid #1f1f3d;
+  margin: 1.5%;
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+article > h3, article > p {
+  padding: 0px 8px;
 }
 
 form > button {
-  height: 15%;
+  height: 10%;
   font-size: calc(.7rem + .7vw);
 }
 
@@ -73,17 +105,18 @@ background-color: #eaeaf4;
 display: flex;
 flex-direction: row;
 flex-wrap: wrap;
+height: 70%;
 }
 
 form {
   display: flex;
   flex-direction: column;
   width: 45%;
-  min-height: 50%;
-  margin-top: 3%;
+  min-height: 40%;
+  margin-top: 4%;
 }
  form > input, form > button, form > div {
-   margin: 0 0 5% 0;;
+   margin: 0 0 8% 0;;
  }
 
  form > label {
@@ -112,15 +145,20 @@ form {
  form > button {
    background-color: #353567;
    color: white;
-   border:
  }
-article {
-  width: 33%;
-}
 
 .search-container {
   display: flex;
   justify-content: space-between;
   align-items: stretch;
   background-color: #353567;
+  height: 10%;
+}
+
+.comment-container {
+  display: flex;
+  background-color: #5356a4;
+  color: #e9e9f3;
+  font-weight: bold;
+  align-items: center;
 }
