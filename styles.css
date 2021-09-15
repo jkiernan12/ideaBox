@@ -49,6 +49,12 @@ h2 {
   font-size: calc(.7rem + .7vw);
   background-color: #353567;
   color: white;
+  cursor: pointer;
+}
+
+.form__button__disabled: hover {
+  background-color: #eaeaf4;
+  cursor: default;
 }
 
 .search-container {
