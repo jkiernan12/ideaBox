@@ -7,15 +7,19 @@ class Idea {
   }
 
   saveToStorage() {
-//^ save the instance to storage
+    window.localStorage.setItem(`${this.id}`, JSON.stringify(this));
   }
 
 
   deleteFromStorage() {
-
+    window.localStorage.removeItem(`${this.id}`);
   }
 
   updateIdea() {
-    //^update idea
+    if (this.star) {
+      this.star = false;
+    } else {
+      this.star = true;
+    }
   }
 }
