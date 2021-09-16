@@ -11,7 +11,8 @@ var ideas = [];
 function saveIdea() {
   if (titleInput.value && bodyInput.value) {
     var currentIdea = new Idea(titleInput.value, bodyInput.value);
-    ideas.push(currentIdea);
+     currentIdea.saveToStorage();
+     
   } 
   // call render function
 };
@@ -22,5 +23,13 @@ function checkInputs() {
   }
 };
 
+function populateIdeas() {
+  for (var i = 0; i < localStorage.length; i++){
+      var currentKey = localStorage.key(i);
+      var ideaToPush = localStorage.getItem(`${currentKey}`);
+      ideaToPush = JSON.parse(ideaToPush);
+      ideas.push(ideaToPush);
+  }
+}
 
 // render function to render to DOM
