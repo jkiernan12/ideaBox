@@ -6,8 +6,10 @@ window.addEventListener('load', populateIdeas);
 saveButton.addEventListener('click', saveIdea);
 saveButton.addEventListener('mouseover', checkInputs);
 saveButton.addEventListener('mouseout', checkInputs);
+ideaContainer.addEventListener('click', deleteCard);
 
 var ideas = [];
+
 
 function saveIdea() {
   if (titleInput.value && bodyInput.value) {
@@ -32,7 +34,6 @@ function populateIdeas() {
   for (var i = 0; i < localStorage.length; i++){
       var currentKey = localStorage.key(i);
       var ideaToPush = localStorage.getItem(`${currentKey}`);
-      console.log(ideaToPush)
       ideaToPush = JSON.parse(ideaToPush);
       ideas.push(ideaToPush);
   }
@@ -47,7 +48,7 @@ function render() {
 `   <article class="idea-card" id='${ideas[i].id}'>
       <div class="star-header">
         <img class="star-header__icon" src="assets/star.svg" alt="star icon">
-        <img class="star-header__icon" src="assets/delete.svg" alt="delete icon">
+        <img class="star-header__icon" id="deleteBtn" src="assets/delete.svg" alt="delete icon">
       </div>
       <h3 class="idea-card__header">${ideas[i].title}</h3>
       <p class="idea-card__body">${ideas[i].body}</p>
@@ -58,3 +59,14 @@ function render() {
     </article>`
   }
 }
+function deleteCard(){
+  if (event.target.id === 'deleteBtn'){
+    var deleteId = event.target.parentNode.parentNode.id;
+    console.log(deleteId);
+    // for (var i = 0; i < ideas.length; i++) {
+    //   if(ideas[i].id == deleteId){
+    //     console.log(ideas[i]);
+        deleteFromStorage(deleteId);
+        populateIdeas();
+      }
+    }

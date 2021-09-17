@@ -12,7 +12,8 @@ class Idea {
 
 
   deleteFromStorage() {
-    window.localStorage.removeItem(`${this.id}`);
+    // window.localStorage.removeItem(`${this.id}`);
+    window.localStorage.removeItem(``)
   }
 
   updateIdea() {
