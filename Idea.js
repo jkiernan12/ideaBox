@@ -1,5 +1,5 @@
 class Idea {
-  constructor(title, body, id) {
+  constructor(title, body, id, star) {
     if (id){
       this.id = id;
     } else {
@@ -8,7 +8,12 @@ class Idea {
 
     this.title = title;
     this.body = body;
-    this.star = false;
+
+    if (star){
+      this.star = star;
+    } else {
+      this.star = false;
+    }
   }
 
   saveToStorage() {
@@ -18,14 +23,14 @@ class Idea {
 
   deleteFromStorage() {
     window.localStorage.removeItem(`${this.id}`);
-    window.localStorage.removeItem(``)
   }
 
   updateIdea() {
-    if (this.star) {
-      this.star = false;
-    } else {
+    if (!this.star) {
       this.star = true;
+    } else {
+      this.star = false;
     }
+    this.saveToStorage();
   }
 }
