@@ -6,7 +6,7 @@ window.addEventListener('load', populateIdeas);
 saveButton.addEventListener('click', saveIdea);
 saveButton.addEventListener('mouseover', checkInputs);
 saveButton.addEventListener('mouseout', checkInputs);
-ideaContainer.addEventListener('click', deleteCard);
+ideaContainer.addEventListener('click', ideaCardHandler);
 
 var ideas = [];
 
@@ -35,7 +35,7 @@ function populateIdeas() {
       var currentKey = localStorage.key(i);
       var ideaToPush = localStorage.getItem(`${currentKey}`);
       ideaToPush = JSON.parse(ideaToPush);
-      ideaToPush = new Idea(ideaToPush.title, ideaToPush.body, ideaToPush.id)
+      ideaToPush = new Idea(ideaToPush.title, ideaToPush.body, ideaToPush.id, ideaToPush.star)
       ideas.push(ideaToPush);
   }
   render();
@@ -45,10 +45,18 @@ function populateIdeas() {
 function render() {
   ideaContainer.innerHTML = "";
   for (var i = 0; i < ideas.length; i++) {
+    var starImage = "";
+    if (ideas[i].star === true) {
+      starImage = "assets/star-active.svg"
+    } else {
+      starImage = "assets/star.svg"
+    }
+
+
     ideaContainer.innerHTML +=
-`   <article class="idea-card" id='${ideas[i].id}'>
+`   <article class="idea-card" id="${ideas[i].id}">
       <div class="star-header">
-        <img class="star-header__icon" src="assets/star.svg" alt="star icon">
+        <img class="star-header__icon" id="starButton" src="${starImage}" alt="star icon">
         <img class="star-header__icon" id="deleteBtn" src="assets/delete.svg" alt="delete icon">
       </div>
       <h3 class="idea-card__header">${ideas[i].title}</h3>
@@ -60,8 +68,8 @@ function render() {
     </article>`
   }
 }
-function deleteCard(event){
-  if (event.target.id === 'deleteBtn'){
+
+function deleteCard(event) {
     var deleteId = event.target.parentNode.parentNode.id;
     console.log(deleteId);
     for (var i = 0; i < ideas.length; i++) {
@@ -69,6 +77,24 @@ function deleteCard(event){
         ideas[i].deleteFromStorage();
         populateIdeas();
       }
+  }
+}
+
+function ideaCardHandler(event) {
+  if (event.target.id === 'deleteBtn') {
+    deleteCard(event);
+  } else if (event.target.id === 'starButton') {
+    toggleStar(event);
+  }
+}
+
+function toggleStar(event) {
+  var starId = event.target.parentNode.parentNode.id;
+  for (var i = 0; i < ideas.length; i++) {
+    console.log(event)
+    if(ideas[i].id == starId){
+      ideas[i].updateIdea();
+      populateIdeas();
     }
   }
 }
