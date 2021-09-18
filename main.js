@@ -35,6 +35,7 @@ function populateIdeas() {
       var currentKey = localStorage.key(i);
       var ideaToPush = localStorage.getItem(`${currentKey}`);
       ideaToPush = JSON.parse(ideaToPush);
+      ideaToPush = new Idea(ideaToPush.title, ideaToPush.body, ideaToPush.id)
       ideas.push(ideaToPush);
   }
   render();
@@ -59,14 +60,15 @@ function render() {
     </article>`
   }
 }
-function deleteCard(){
+function deleteCard(event){
   if (event.target.id === 'deleteBtn'){
     var deleteId = event.target.parentNode.parentNode.id;
     console.log(deleteId);
-    // for (var i = 0; i < ideas.length; i++) {
-    //   if(ideas[i].id == deleteId){
-    //     console.log(ideas[i]);
-        deleteFromStorage(deleteId);
+    for (var i = 0; i < ideas.length; i++) {
+      if(ideas[i].id == deleteId){
+        ideas[i].deleteFromStorage();
         populateIdeas();
       }
     }
+  }
+}

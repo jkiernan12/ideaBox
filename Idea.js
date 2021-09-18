@@ -1,6 +1,11 @@
 class Idea {
-  constructor(title, body) {
-    this.id = Date.now();
+  constructor(title, body, id) {
+    if (id){
+      this.id = id;
+    } else {
+      this.id = Date.now();
+    }
+
     this.title = title;
     this.body = body;
     this.star = false;
@@ -12,7 +17,7 @@ class Idea {
 
 
   deleteFromStorage() {
-    // window.localStorage.removeItem(`${this.id}`);
+    window.localStorage.removeItem(`${this.id}`);
     window.localStorage.removeItem(``)
   }
 
