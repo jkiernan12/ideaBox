@@ -2,11 +2,13 @@ var saveButton = document.querySelector('#saveButton');
 var titleInput = document.querySelector('#titleInput');
 var bodyInput = document.querySelector('#bodyInput');
 var ideaContainer= document.querySelector('#ideaContainer');
+var searchInput = document.querySelector('#searchInput');
 window.addEventListener('load', populateIdeas);
 saveButton.addEventListener('click', saveIdea);
 saveButton.addEventListener('mouseover', checkInputs);
 saveButton.addEventListener('mouseout', checkInputs);
 ideaContainer.addEventListener('click', ideaCardHandler);
+searchInput.addEventListener('keyup', searchIdeas)
 
 var ideas = [];
 
@@ -95,6 +97,19 @@ function toggleStar(event) {
     if(ideas[i].id == starId){
       ideas[i].updateIdea();
       populateIdeas();
+    }
+  }
+}
+
+function searchIdeas(event) {
+  event.preventDefault();
+  var currentInput = searchInput.value;
+  for (var i = 0; i < ideas.length; i++) {
+    var currentHTMLElement = document.getElementById(`${ideas[i].id}`);
+    if (!ideas[i].body.includes(currentInput) && !ideas[i].title.includes(currentInput)) {
+      currentHTMLElement.classList.add("hidden");
+    } else {
+      currentHTMLElement.classList.remove("hidden");
     }
   }
 }

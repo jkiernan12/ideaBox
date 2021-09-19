@@ -164,3 +164,7 @@ height: 70%;
   font-weight: bold;
   align-items: center;
 }
+
+.hidden {
+  display: none;
+}
