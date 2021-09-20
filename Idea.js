@@ -5,10 +5,8 @@ class Idea {
     } else {
       this.id = Date.now();
     }
-
     this.title = title;
     this.body = body;
-
     if (star){
       this.star = star;
     } else {
@@ -33,4 +31,4 @@ class Idea {
     }
     this.saveToStorage();
   }
-}
+};
