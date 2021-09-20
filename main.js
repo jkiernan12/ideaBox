@@ -1,14 +1,16 @@
 var saveButton = document.querySelector('#saveButton');
 var titleInput = document.querySelector('#titleInput');
 var bodyInput = document.querySelector('#bodyInput');
-var ideaContainer= document.querySelector('#ideaContainer');
+var ideaContainer = document.querySelector('#ideaContainer');
 var searchInput = document.querySelector('#searchInput');
+var starredIdeasButton = document.querySelector('#starSectionButton')
 window.addEventListener('load', populateIdeas);
 saveButton.addEventListener('click', saveIdea);
 saveButton.addEventListener('mouseover', checkInputs);
 saveButton.addEventListener('mouseout', checkInputs);
 ideaContainer.addEventListener('click', ideaCardHandler);
 searchInput.addEventListener('keyup', searchIdeas)
+starredIdeasButton.addEventListener('click', showStarredIdeas)
 
 var ideas = [];
 
@@ -16,10 +18,10 @@ var ideas = [];
 function saveIdea() {
   if (titleInput.value && bodyInput.value) {
     var currentIdea = new Idea(titleInput.value, bodyInput.value);
-     currentIdea.saveToStorage();
-     populateIdeas();
-     titleInput.value = "";
-     bodyInput.value = "";
+    currentIdea.saveToStorage();
+    populateIdeas();
+    titleInput.value = "";
+    bodyInput.value = "";
   }
   // call render function
 
@@ -33,12 +35,12 @@ function checkInputs() {
 
 function populateIdeas() {
   ideas = [];
-  for (var i = 0; i < localStorage.length; i++){
-      var currentKey = localStorage.key(i);
-      var ideaToPush = localStorage.getItem(`${currentKey}`);
-      ideaToPush = JSON.parse(ideaToPush);
-      ideaToPush = new Idea(ideaToPush.title, ideaToPush.body, ideaToPush.id, ideaToPush.star)
-      ideas.push(ideaToPush);
+  for (var i = 0; i < localStorage.length; i++) {
+    var currentKey = localStorage.key(i);
+    var ideaToPush = localStorage.getItem(`${currentKey}`);
+    ideaToPush = JSON.parse(ideaToPush);
+    ideaToPush = new Idea(ideaToPush.title, ideaToPush.body, ideaToPush.id, ideaToPush.star)
+    ideas.push(ideaToPush);
   }
   render();
 }
@@ -56,7 +58,7 @@ function render() {
 
 
     ideaContainer.innerHTML +=
-`   <article class="idea-card" id="${ideas[i].id}">
+      `   <article class="idea-card" id="${ideas[i].id}">
       <div class="star-header">
         <img class="star-header__icon" id="starButton" src="${starImage}" alt="star icon">
         <img class="star-header__icon" id="deleteBtn" src="assets/delete.svg" alt="delete icon">
@@ -72,13 +74,13 @@ function render() {
 }
 
 function deleteCard(event) {
-    var deleteId = event.target.parentNode.parentNode.id;
-    console.log(deleteId);
-    for (var i = 0; i < ideas.length; i++) {
-      if(ideas[i].id == deleteId){
-        ideas[i].deleteFromStorage();
-        populateIdeas();
-      }
+  var deleteId = event.target.parentNode.parentNode.id;
+  console.log(deleteId);
+  for (var i = 0; i < ideas.length; i++) {
+    if (ideas[i].id == deleteId) {
+      ideas[i].deleteFromStorage();
+      populateIdeas();
+    }
   }
 }
 
@@ -94,7 +96,7 @@ function toggleStar(event) {
   var starId = event.target.parentNode.parentNode.id;
   for (var i = 0; i < ideas.length; i++) {
     console.log(event)
-    if(ideas[i].id == starId){
+    if (ideas[i].id == starId) {
       ideas[i].updateIdea();
       populateIdeas();
     }
@@ -110,6 +112,27 @@ function searchIdeas(event) {
       currentHTMLElement.classList.add("hidden");
     } else {
       currentHTMLElement.classList.remove("hidden");
+    }
+  }
+}
+
+function showStarredIdeas(event) {
+  event.preventDefault();
+  if (starredIdeasButton.innerText === "Show Starred Ideas") {
+    starredIdeasButton.innerText = "Show All Ideas"
+    for (var i = 0; i < ideas.length; i++) {
+      var currentHTMLElement = document.getElementById(`${ideas[i].id}`);
+      if (!ideas[i].star) {
+        currentHTMLElement.classList.add("hidden");
+      }
+    }
+  } else {
+    starredIdeasButton.innerText = "Show Starred Ideas"
+    for (var i = 0; i < ideas.length; i++) {
+      var currentHTMLElement = document.getElementById(`${ideas[i].id}`);
+      if (!ideas[i].star) {
+        currentHTMLElement.classList.remove("hidden");
+      }
     }
   }
 }
