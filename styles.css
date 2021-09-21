@@ -71,6 +71,7 @@ h2 {
 .search-container__input-button {
   width: 10%;
   padding: 5px;
+  cursor: pointer;
 }
 
 .idea-card {
@@ -93,6 +94,7 @@ h2 {
 
 .star-header__icon {
   width: 15%;
+  cursor: pointer;
 }
 
 .idea-card__header, .idea-card__body {
@@ -124,6 +126,7 @@ h2 {
   margin: 20px;
   height: 40%;
   padding: 10px;
+  cursor: pointer;
 }
 
 section {
