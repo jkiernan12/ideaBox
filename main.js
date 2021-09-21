@@ -6,20 +6,14 @@ var starredIdeasButton = document.querySelector('#starSectionButton');
 var titleInput = document.querySelector('#titleInput');
 
 window.addEventListener('load', populateIdeas);
+bodyInput.addEventListener('keyup', toggleButton);
 ideaContainer.addEventListener('click', ideaCardHandler);
 saveButton.addEventListener('click', saveIdea);
-saveButton.addEventListener('mouseover', checkInputs);
-saveButton.addEventListener('mouseout', checkInputs);
 searchInput.addEventListener('keyup', searchIdeas);
 starredIdeasButton.addEventListener('click', showStarredIdeas);
+titleInput.addEventListener('keyup', toggleButton);
 
 var ideas = [];
-
-function checkInputs() {
-  if (!titleInput.value || !bodyInput.value) {
-    saveButton.classList.toggle('form__button__disabled');
-  }
-};
 
 function deleteCard(event) {
   var deleteId = event.target.parentNode.parentNode.id;
@@ -30,6 +24,14 @@ function deleteCard(event) {
     }
   }
 };
+
+function toggleButton() {
+  if (bodyInput.value && titleInput.value) {
+    saveButton.disabled = false;
+  } else {
+    saveButton.disabled = true;
+  }
+}
 
 function ideaCardHandler(event) {
   if (event.target.id === 'deleteBtn') {
@@ -83,6 +85,7 @@ function saveIdea() {
     populateIdeas();
     titleInput.value = "";
     bodyInput.value = "";
+    toggleButton();
   }
 };
 
