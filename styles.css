@@ -57,8 +57,8 @@ h2 {
   cursor: pointer;
 }
 
-.form__button__disabled: hover {
-  background-color: #eaeaf4;
+.form__button:disabled {
+  background-color: #58587b;
   cursor: default;
 }
 
