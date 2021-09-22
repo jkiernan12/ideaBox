@@ -25,6 +25,11 @@ Our project can be found [here.](https://emily-cathleen.github.io/ideaBox/)
 
 Access a demonstration of this project [here.](https://media.giphy.com/media/rvNfZoavxDDllvZSB9/giphy.gif?cid=790b76110c83f8fb0c8ecc416216957b6ec0131a3da1e8c2&rid=giphy.gif&ct=g)
 
+## Features to be Added
+
+- Add Comments
+- Edit/Delete Comments
+
 ## Contributors
 
 - [John Kiernan](https://github.com/jkiernan12)
