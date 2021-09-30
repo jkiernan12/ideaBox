@@ -1,6 +1,6 @@
 # IdeaBox
 
-Our project can be found [here.](https://emily-cathleen.github.io/ideaBox/)
+Our project can be found [here.](https://jkiernan12.github.io/ideaBox/)
 
 ## Abstract
 
